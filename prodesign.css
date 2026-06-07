@@ -193,6 +193,7 @@ body {
 .collections {
   background-color: #fdf6ee;
   padding: 2.5rem 1rem 3rem; /* less padding on mobile */
+  width: 100%; /* ensure full width background always */
 }
 
 .collections-title {
@@ -336,11 +337,10 @@ body {
     font-size: 3.2rem;
   }
 
+  /* FIX: collections stays full-width, only inner content is capped */
   .collections {
     padding: 4rem 2rem 5rem;
-    max-width: 1200px;   /* wider content area on desktop */
-    margin-left: auto;
-    margin-right: auto;
+    /* REMOVED: max-width, margin-left, margin-right — these caused the white sides */
   }
 
   .collections-title {
@@ -348,7 +348,10 @@ body {
     margin-bottom: 2.5rem;
   }
 
+  /* products grid handles the centering instead */
   .products {
+    max-width: 1200px;
+    margin: 0 auto;
     gap: 1.25rem;
   }
 
