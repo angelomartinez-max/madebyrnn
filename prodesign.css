@@ -9,6 +9,7 @@
 body {
   font-family: 'Lora', serif;
   min-height: 100vh;
+  font-size: 16px; /* base font size for mobile */
 }
 
 /* =====================
@@ -23,19 +24,19 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.85rem 2rem;
+  padding: 0.85rem 1rem; /* less side padding on mobile */
   background: #e8d5f0;
   border-bottom: 2px solid #d4b8e0;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1rem; /* tighter gap on mobile */
 }
 
 .nav-link {
   font-family: 'Dancing Script', cursive;
-  font-size: 1.3rem;
+  font-size: 1.1rem; /* slightly smaller on mobile */
   font-weight: 600;
   color: #4a3728;
   text-decoration: none;
@@ -66,10 +67,10 @@ body {
 .nav-shop {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   text-decoration: none;
   font-family: 'Dancing Script', cursive;
-  font-size: 1.1rem;
+  font-size: 1rem; /* smaller on mobile */
   font-weight: 600;
   color: #4a3728;
   transition: opacity 0.2s;
@@ -87,8 +88,8 @@ body {
 }
 
 .nav-icon {
-  width: 38px;
-  height: 38px;
+  width: 34px; /* slightly smaller on mobile */
+  height: 34px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid rgba(255,255,255,0.6);
@@ -105,7 +106,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 2rem 3rem;
+  padding: 5rem 1rem 3rem; /* less side padding on mobile */
   background-image: url('collage.jpg');
   background-size: cover;
   background-position: center;
@@ -113,7 +114,6 @@ body {
   position: relative;
 }
 
-/* overlay — subtle para lumabas ang photos */
 .hero::before {
   content: '';
   position: absolute;
@@ -127,23 +127,21 @@ body {
   z-index: 1;
 }
 
-/* Option D: lavender frosted card — matches navbar */
 .header {
   background: rgba(232, 213, 240, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(212, 184, 224, 0.7);
   border-radius: 20px;
-  padding: 2.2rem 2.8rem;
+  padding: 1.5rem 1.2rem; /* less padding on mobile */
   max-width: 480px;
   width: 100%;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
 }
 
-/* dark brown — same as nav links */
 .header h1 {
   font-family: 'Dancing Script', cursive;
-  font-size: 3.2rem;
+  font-size: 2.4rem; /* smaller on mobile */
   font-weight: 700;
   color: #4a3728;
   margin-bottom: 1rem;
@@ -151,14 +149,13 @@ body {
 }
 
 .header p {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   line-height: 1.85;
   color: #4a3728;
   font-style: italic;
   text-shadow: none;
 }
 
-/* scroll hint — white so it's visible against photos */
 .scroll-hint {
   margin-top: 2.5rem;
   display: flex;
@@ -195,22 +192,22 @@ body {
    ===================== */
 .collections {
   background-color: #fdf6ee;
-  padding: 4rem 2rem 5rem;
+  padding: 2.5rem 1rem 3rem; /* less padding on mobile */
 }
 
 .collections-title {
   font-family: 'Dancing Script', cursive;
-  font-size: 2.2rem;
+  font-size: 1.9rem; /* smaller on mobile */
   color: #4a3728;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   font-weight: 700;
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+  gap: 0.85rem;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -243,18 +240,119 @@ body {
 
 .product-top {
   font-family: 'Dancing Script', cursive;
-  font-size: 1.25rem;
+  font-size: 1.1rem; /* smaller on mobile */
   color: #4a3728;
   text-align: center;
-  padding: 0.85rem 1rem;
+  padding: 0.7rem 0.8rem;
   background: #fff;
 }
 
 /* =====================
-   RESPONSIVE
+   TABLET (768px and up)
    ===================== */
-@media (max-width: 640px) {
-  .products { grid-template-columns: repeat(2, 1fr); }
-  .header h1 { font-size: 2.4rem; }
-  .header { padding: 0; }
+@media (min-width: 768px) {
+  .navbar {
+    padding: 0.85rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+  }
+
+  .nav-shop {
+    font-size: 1.05rem;
+  }
+
+  .nav-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hero {
+    padding: 6rem 2rem 3rem;
+  }
+
+  .header {
+    padding: 2rem 2.4rem;
+  }
+
+  .header h1 {
+    font-size: 2.9rem;
+  }
+
+  .collections {
+    padding: 3.5rem 2rem 4rem;
+  }
+
+  .collections-title {
+    font-size: 2.1rem;
+  }
+
+  .products {
+    grid-template-columns: repeat(3, 1fr); /* back to 3 columns */
+    gap: 1.1rem;
+  }
+
+  .product-top {
+    font-size: 1.2rem;
+    padding: 0.85rem 1rem;
+  }
+}
+
+/* =====================
+   DESKTOP (1024px and up)
+   ===================== */
+@media (min-width: 1024px) {
+  .navbar {
+    padding: 0.85rem 2rem;
+  }
+
+  .nav-links {
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 1.3rem;
+  }
+
+  .nav-shop {
+    font-size: 1.1rem;
+  }
+
+  .nav-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header {
+    padding: 2.2rem 2.8rem;
+  }
+
+  .header h1 {
+    font-size: 3.2rem;
+  }
+
+  .collections {
+    padding: 4rem 2rem 5rem;
+    max-width: 1200px;   /* wider content area on desktop */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .collections-title {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .products {
+    gap: 1.25rem;
+  }
+
+  .product-top {
+    font-size: 1.25rem;
+  }
 }
