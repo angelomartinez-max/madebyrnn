@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="prodesign.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+  <title>madebyrnn</title>
+</head>
+<body>
+
+  <!-- NAVBAR: links sa left, icon sa right -->
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="#hero" class="nav-link" id="nav-home">Home</a>
+      <a href="#collections" class="nav-link" id="nav-collections">Collections</a>
+    </div>
+    <a href="https://ko-fi.com/madebyrnn" class="nav-shop">
+      visit my shop
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <img src="yanawebpics/loopy.jfif" class="nav-icon" />
+    </a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="header">
+      <h1>Welcome!</h1>
+      <p>Made by Rnn is a PH based crochet small business managed by an 19 year old interior design student who always works on her wips during her free time! ⋆ ˚｡⋆୨୧˚</p>
+    </div>
+
+    <div class="scroll-hint" id="scrollBtn">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      scroll down
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section class="collections" id="collections">
+    <h2 class="collections-title">Collections</h2>
+    <div class="products">
+
+      <!--HEATHER-->
+      <a href="https://www.instagram.com/p/DMXG5F9SNRo/?img_index=2" class="card-btn">
+        <div class="product-card">
+          <img src="yanawebpics/test2.jfif" class="preview">
+          <div class="product-top">heather</div>
+        </div>
+      </a>
+
+      <!--FLORENCIA-->
+      <a href="https://www.instagram.com/p/DSpXDqMks-t/" class="card-btn">
+        <div class="product-card">
+          <img src="yanawebpics/test.jfif" class="preview">
+          <div class="product-top">florencia</div>
+        </div>
+      </a>
+
+      <!--NATASHA-->
+      <a href="https://www.instagram.com/p/DP5rcQRki7I/" class="card-btn">
+        <div class="product-card">
+          <img src="yanawebpics/test3.jfif" class="preview">
+          <div class="product-top">natasha</div>
+        </div>
+      </a>
+
+      <!--NEPTUNE-->
+      <a href="https://www.instagram.com/p/DL_6RfTy7bL/" class="card-btn">
+        <div class="product-card">
+          <img src="yanawebpics/neptune.jfif" class="preview">
+          <div class="product-top">neptune</div>
+        </div>
+      </a>
+
+      <!--LEIGHANNE-->
+      <a href="https://www.instagram.com/p/DUruURIEvMJ/" class="card-btn">
+        <div class="product-card">
+          <img src="yanawebpics/leighanne.jfif" class="preview">
+          <div class="product-top">leighanne</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DVgK7zVkiXx/" class="card-btn">
+        <div class="product-card">
+          <img src="yanawebpics/lola.jfif" class="preview">
+          <div class="product-top">lola</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <script>
+    // ── Smooth scroll ──
+    function smoothScroll(targetId) {
+      var target = document.getElementById(targetId);
+      var targetPos = target.getBoundingClientRect().top + window.pageYOffset;
+      var startPos = window.pageYOffset;
+      var distance = targetPos - startPos;
+      var duration = 900;
+      var startTime = null;
+
+      function ease(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      }
+
+      function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        var timeElapsed = currentTime - startTime;
+        var run = ease(timeElapsed, startPos, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+
+      requestAnimationFrame(animation);
+    }
+
+    document.getElementById('scrollBtn').addEventListener('click', function() {
+      smoothScroll('collections');
+    });
+
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetId = this.getAttribute('href').replace('#', '');
+        smoothScroll(targetId);
+      });
+    });
+
+    // ── Active nav underline on scroll ──
+    var navHome = document.getElementById('nav-home');
+    var navCollections = document.getElementById('nav-collections');
+    var heroSection = document.getElementById('hero');
+    var collectionsSection = document.getElementById('collections');
+
+    function updateActiveNav() {
+      var scrollY = window.pageYOffset;
+      var collectionsTop = collectionsSection.getBoundingClientRect().top + window.pageYOffset - 80;
+
+      if (scrollY >= collectionsTop) {
+        navCollections.classList.add('active');
+        navHome.classList.remove('active');
+      } else {
+        navHome.classList.add('active');
+        navCollections.classList.remove('active');
+      }
+    }
+
+    // Set Home as active on load
+    updateActiveNav();
+    window.addEventListener('scroll', updateActiveNav);
+  </script>
+</body>
+</html>
